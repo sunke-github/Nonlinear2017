@@ -3,8 +3,6 @@ from mpl_toolkits.mplot3d import Axes3D
 import scipy.integrate as integrate
 import matplotlib.pyplot as plt
 import numpy as np
-fig = plt.figure()
-ax = fig.gca(projection='3d')
 
 def pend(d0,t,a,b,c,r):
     x,y,z=d0
@@ -19,9 +17,9 @@ d0 = [0.1,0.1,0.1]
 
 t= np.linspace(0,1000,100000)
 sol = integrate.odeint(pend,d0,t,args=(a,b,c,r))
-print(sol[:,0])
 
-
+fig = plt.figure()
+ax = fig.gca(projection='3d')
 ax.plot(sol[:,0], sol[:,1], sol[:,2],label='parametric curve')
 ax.legend()
 plt.show()
